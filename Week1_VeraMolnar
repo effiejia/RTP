@@ -1,0 +1,31 @@
+float x;
+float y;
+float xoff;
+float increment;
+
+void setup() {
+  size(900,600);
+  background(#2e2e86);
+  x = 0;
+  y = height/2;
+  xoff = 0;
+  increment = 0.02;
+}
+
+void draw() {
+  float n = noise(xoff)*300;
+  float newx = constrain(x+random(-n,n), -100, 1300);
+  float newy = random(150,450);
+
+  stroke(#299ad6);
+  strokeWeight(2);
+  line(x,y,newx,newy);
+
+  xoff += increment;
+  x = newx;
+  y = newy;
+}
+
+void keyPressed() {
+  saveFrame("VeraMolnar.jpg");
+}
