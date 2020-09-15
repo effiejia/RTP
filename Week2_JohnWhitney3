@@ -1,0 +1,34 @@
+float t;
+float xamp = 250;
+float yamp = 250;
+float xwave = 7;
+float ywave = 4;
+float d = 0.05;
+float numPoints = 20;
+
+void setup() {
+  size(1200,800);
+}
+
+void draw() {
+  background(0);
+  translate(width/2, height/2);
+  
+  for (int i=0; i<numPoints; i++) {
+    stroke(255);
+    strokeWeight(15);
+    point(x(t+i), y(t+i));
+  }
+  
+  saveFrame("Output/JohnWhitney3_####.png");
+
+  t += 0.005;
+}
+
+float x(float t) {
+  return xamp * sin(xwave * t - d);
+}
+
+float y(float t) {
+  return yamp * cos(ywave * t - d);
+}
