@@ -1,0 +1,36 @@
+void ofApp::draw(){
+	ofBackground(255);
+
+	float angle = 0.0;
+	float amt = 8.0;
+	float inc = PI / 50.0;
+	float prevX = 0, prevY = 0;
+	float x, y;
+	float r = ofRandom(0, 255);
+	float b = ofRandom(0, 255);
+	float g = ofRandom(0, 255);
+
+
+	for (int i = -20; i < 820; i += 10) {
+		for (int j = -12; j < ofGetWidth(); j += 2) {
+			x = j;
+			y = i + sin(angle) * amt;
+
+			ofSetLineWidth(3);
+
+			if (j % 10 == 0) {
+				r = ofRandom(0, 255);
+				b = ofRandom(0, 255);
+				g = ofRandom(0, 255);
+			}
+			ofSetColor(r, b, g);
+			ofDrawLine(prevX, prevY, x, y);
+
+			prevX = x;
+			prevY = y;
+			angle += inc;
+		}
+		prevX = 0;
+		prevY = 0;
+	}
+}
